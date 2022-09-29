@@ -3,8 +3,8 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8080;
 const cors = require("cors");
-const readPokemons = require("./fetchData");
-//const pokemonsRouter = require("./routes/pokemons");
+//const readPokemons = require("./fetchData");
+const pokemonsRouter = require("./routes/pokemons");
 
 
 // implementing Routes
@@ -23,7 +23,7 @@ app.get("/", (req, res)=>{
 
 
 // use ROUTES
-app.use("/pokemon", readPokemons);
+app.use("/pokemon", pokemonsRouter);
 
 
 app.listen(PORT, ()=>{
