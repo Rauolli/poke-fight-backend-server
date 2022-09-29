@@ -9,26 +9,30 @@ const getAllPokemons = async (req, res) => {
 };
 
 const getSinglePokemon = async (req, res) => {
-    const { id } = req.params;
+    const paramsID = req.params.id;
     try{
-        const data = await fetch(jsonData);
-        if(data.id === id){
-        res.json(data); 
+        const data = await readPokemons();       
+        const pokemonWidthID = data.filter(pokemon => {
+            const { id } = pokemon;
+            if (id ===  parseInt(paramsID)) {
+                return pokemon;   
+            }
+        });
+
+        if (pokemonWidthID.length === 0) {
+            res.send(`The id: ${paramsID} does not exists!`);
+        }else{
+            res.json(pokemonWidthID);
         }
-        res.send("This id does not exists.");
     }catch(err){
         console.log(err);
     }
 };
 
 const getSinglePokemonType = async (req, res) => {
-    const { id } = req.params;
+    
     try{
-        const data = await fetch(jsonData);
-        if(data.id === id){
-        res.json(data); 
-        }
-        res.send("This id does not exists.");
+        
     }catch(err){
         console.log(err);
     }
