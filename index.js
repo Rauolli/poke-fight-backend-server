@@ -16,7 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // connecting to DB
-db();
+// DB-Connection has to be actualized to a new MongoDB-Connection before using db()
+//db();
 
 app.get("/", (req, res)=>{
     res.send(`Poke-Fight-Backend-Sever is running properly on Port: ${PORT}!`);
