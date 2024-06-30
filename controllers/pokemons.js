@@ -1,4 +1,5 @@
-const pokemonsJsonData = require("../pokemos.json");
+const pokemonsJsonData = require("../pokemons.json");
+const path = require("path");
 
 const getAllPokemons = (req, res) => {
     try{
@@ -22,8 +23,15 @@ const getSinglePokemon = (req, res) => {
     }
 };
 
+const getSinglePokemonImage = (req, res) => {
+    const paramsID = req.params.id;
+    const image = path.join(__dirname, `../imgs/${paramsID}.svg`);
+    res.sendFile(image);
+};
+
 
 module.exports = {
     getAllPokemons,
     getSinglePokemon,
+    getSinglePokemonImage
 };
