@@ -1,8 +1,8 @@
-const readPokemons = require("../fetchData");
+const pokemonsJsonData = require("../fetchData");
 
 const getAllPokemons = async (req, res) => {
     try{
-        res.json(await readPokemons());
+        res.json(await pokemonsJsonData);
     }catch(err){
         console.log(err);
     }
